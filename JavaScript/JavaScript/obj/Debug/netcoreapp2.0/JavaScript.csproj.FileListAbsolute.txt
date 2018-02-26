@@ -1,0 +1,11 @@
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\bin\Debug\netcoreapp2.0\JavaScript.deps.json
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\bin\Debug\netcoreapp2.0\JavaScript.runtimeconfig.json
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\bin\Debug\netcoreapp2.0\JavaScript.runtimeconfig.dev.json
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\bin\Debug\netcoreapp2.0\JavaScript.dll
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\bin\Debug\netcoreapp2.0\JavaScript.pdb
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\obj\Debug\netcoreapp2.0\JavaScript.csprojResolveAssemblyReference.cache
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\obj\Debug\netcoreapp2.0\JavaScript.csproj.CoreCompileInputs.cache
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\obj\Debug\netcoreapp2.0\JavaScript.AssemblyInfoInputs.cache
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\obj\Debug\netcoreapp2.0\JavaScript.AssemblyInfo.cs
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\obj\Debug\netcoreapp2.0\JavaScript.dll
+C:\Users\pen\Desktop\SQL\JavaScript\JavaScript\JavaScript\obj\Debug\netcoreapp2.0\JavaScript.pdb

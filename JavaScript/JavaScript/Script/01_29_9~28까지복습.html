@@ -1,0 +1,14 @@
+﻿<script language="javascript" type="text/javascript">
+    //퀴즈 1부터 100까지 3의 배수 또는 4의 배수의 합을 구하는 프로그램
+    var sum = 0;
+
+    for (var i = 1; i <= 100; i++)
+    {
+        if (i % 3 == 0 || i % 4 == 0)
+        {
+            sum += i;
+        }
+    }
+
+    document.write("1부터 100까지 3의 배수 또는 4의 배수의 합 : " + sum);
+</script>

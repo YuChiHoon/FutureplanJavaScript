@@ -1,0 +1,25 @@
+﻿<script language="javascript" type="text/javascript">
+    // eval() 함수
+    var str = "3 + 5";
+    document.write(str);
+    document.write("<br/>");
+
+    document.write(eval(str));      // 연산식을 계산해준다. "3 + 5" -> 3 + 5 = 8
+    document.write("<br/>");
+
+    // parseInt() 함수
+    var num = 12.35;                // 실수형
+    document.write(num, "<br/>");
+    document.write(parseInt(num), "<br/>");
+
+    // parseFloat() 함수 : 수(모양) -> 실수
+    var su = "12.34";
+    document.write(typeof (su), "<br/>");                   //string
+    document.write(typeof (parseFloat(su)), "<br/>");       //무늬만 숫자값을 실제 숫자값으로 변경
+    document.write(typeof (parseInt(su)), "<br/>");
+
+    //-> typeof() 연산자 :  현재값의 유형을 반환시켜주는 연산자
+
+    var nan = "안녕";
+    document.write(parseFloat(nan), "<br/>");               //NaN(Not a Number) 메시지 출력
+</script>

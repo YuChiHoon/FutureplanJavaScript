@@ -1,0 +1,28 @@
+﻿<script language="javascript" type="text/javascript">
+    function GoBack()
+    {
+        history.back();
+    }
+    function GoForward()
+    {
+        history.forward();
+    }
+    function GoBack1()
+    {
+        history.go(-1);
+    }
+</script>
+
+<input type="button" value="뒤로" onclick="GoBack();"/>
+
+<br/>
+
+<a href="#" onclick="GoForward()">앞으로</a>
+
+<br/>
+
+<input type="button" value="한단계 뒤로" onclick="history.go(-1);"/>
+
+<br/>
+
+<a href="javascript:GoBack1()">한단계 뒤로</a>

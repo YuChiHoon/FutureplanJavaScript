@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        function CheckForm()
+        {
+            var uid = document.getElementById("txtUserID");
+            if (uid.value.length < 3 || uid.value.length > 12) {
+                window.alert("아이디를 3자 이상 12자 이하로 입력하시오.");
+                uid.focus();
+                uid.select();
+                return false;       //멈춤
+            }
+            else
+            {
+                return true;        //submit 이벤트 실행
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="MyForm" action="데이터 넘길 장소" method="post"
+          onsubmit="return CheckForm();">
+        아이디 : <input type="text" id="txtUserID"/>
+        <input type="submit" value="확인" />
+    </form>
+</body>
+</html>

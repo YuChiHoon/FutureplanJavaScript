@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>폼 유효성 검사 : 아이디 및 암호 체크</title>
+    <style type="text/css">
+        div,td {color:navy; font-size:9pt; font-family:"맑은 고딕" Verdana 굴림;}
+    </style>
+    <script  language="javascript" type="text/javascript">
+        //로그인이 submit일때 form에 onsumit="CheckForm()"추가
+        function CheckForm()
+        {
+            //[1] 아이디 텍스트박스에 접급해서 txtUserID 변수로 객체 담기
+            var txtuserID = document.FrmLogin.txtUserID;
+            if (txtuserID.value == "")                  // 아이디가 입력되지 않았다면.
+            {
+                window.alert("아이디를 입력하시오.");
+                return false;                           //현재 submit 이벤트 중지
+            }
+            //[2] 암호 체크
+            if (document.FrmLogin.txtPassword.value == "")
+            {
+                window.alert("비밀번호를 입력하시오.");
+                return false;                           //현재 submit 이벤트 중지
+            }
+        }
+
+        //로그인이 버튼일때
+        function CheckForm2()
+        {
+            //[1] 아이디 텍스트박스에 접급해서 txtUserID 변수로 객체 담기
+            var txtuserID = document.FrmLogin.txtUserID;
+            if (txtuserID.value == "" || (txtuserID.value.length < 3 || txtuserID.value.length >12))                  // 아이디가 입력되지 않았다면.
+            {
+                window.alert("아이디를 입력하시오.");
+                document.FrmLogin.txtUserID.focus();            //해당 객체에 포커스
+                document.getElementById("txtUserID").select();   //해당 객체의 텍스트 선택
+                return false;                                   //현재 submit 이벤트 중지
+            }
+
+            else if (document.getElementById("txtPassword").value.length < 3)
+            {
+                window.alert("암호를 입력하시오");
+                document.getElementById("txtPassword").focus();
+                return false;
+            }
+
+            else
+            {
+                document.FrmLogin.action = "데이터 받을 장소";
+                document.FrmLogin.submit();             //폼의 내용을 action속성의 URL로 전송
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="FrmLogin" name="FrmLogin" action="데이터 받을 장소" method="post"
+          onsubmit="CheckForm()">
+        <div align="center">
+            <table border="1" width="300">
+                <tr>
+                    <td>아이디 :</td>
+                    <td><input type="text" id="txtUserID" name="txtUserID"/></td>
+                </tr>
+
+                <tr>
+                    <td>암호 :</td>
+                    <td><input type="password" id="txtPassword" name="txtPassword"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="로그인" onclick="CheckForm2()"/>
+                        <input type="reset" value="취소" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

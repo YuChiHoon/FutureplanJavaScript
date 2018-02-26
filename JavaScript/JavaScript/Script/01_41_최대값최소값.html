@@ -1,0 +1,27 @@
+﻿<script language="javascript" type="text/javascript">
+    //주어진 3개 또는 5개의 정수 중에서 최대값 또는 최소값을 구하는 알고리즘 예제
+
+    //Input
+    var kor = [88, 99, 77, 66, 90];     //가장 큰 값 : 99
+    var max = 0;                        //최대값이 저장될 변수
+    var min = 0;
+
+    //process : max,min 알고리즘
+    for (var i = 0; i < kor.length; i++)
+    {
+        if (max < kor[i])
+        {
+            max = kor[i];
+        }
+
+        if (i == 0 || min > kor[i])
+        {
+            min = kor[i];
+        }
+    }
+
+    //output
+    document.write("최대값 : " + max + "<br/>");
+    document.write("최소값 : " + min + "<br/>");
+
+</script>
