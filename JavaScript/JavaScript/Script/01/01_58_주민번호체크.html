@@ -1,0 +1,136 @@
+﻿<script language="javascript" type="text/javascript">
+    //[2] 공백 검사
+    function IsEmpty(toCheck)
+    {
+        var chkstr = toCheck + "";
+        var is_Space = true;
+        if ((chkstr == "") || (chkstr == null))
+            return false;
+        for (j = 0; is_Space && (j < chkstr.length); j++)
+        {
+            if (chkstr.substring(j, j + 1) != " ")
+                is_Space = false;
+        }
+        return (is_Space);
+    }
+
+    //[3] 정수값 검사
+    function IsInteger(st)
+    {
+        /// <summary>숫자인지 아닌지 확인하는 함수</summary>
+        if (st.length > 0)
+        {
+            for (j = 0; j < st.length; j++)
+            {
+                if (((st.substring(j, j + 1) < "0") || (st.substring(j, j + 1) > "9")))
+                    return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+        return true;
+    }
+
+    //[4] 주민등록번호 체크 스크립트
+    function id_no_chk(obj1, obj2) {
+        str1 = obj1.value;
+        str2 = obj2.value;
+        var li_lastid, li_mod, li_minus, li_last;
+        var value0, value1, value2, value3, value4, value5, value6;
+        var value7, value8, value9, value10, value11, value12;
+
+        if (IsInteger(str1) && IsInteger(str2)) {
+            li_lastid = parseFloat(str2.substring(6, 7));
+            value0 = parseFloat(str1.substring(0, 1)) * 2;
+            value1 = parseFloat(str1.substring(1, 2)) * 3;
+            value2 = parseFloat(str1.substring(2, 3)) * 4;
+            value3 = parseFloat(str1.substring(3, 4)) * 5;
+            value4 = parseFloat(str1.substring(4, 5)) * 6;
+            value5 = parseFloat(str1.substring(5, 6)) * 7;
+            value6 = parseFloat(str2.substring(0, 1)) * 8;
+            value7 = parseFloat(str2.substring(1, 2)) * 9;
+            value8 = parseFloat(str2.substring(2, 3)) * 2;
+            value9 = parseFloat(str2.substring(3, 4)) * 3;
+            value10 = parseFloat(str2.substring(4, 5)) * 4;
+            value11 = parseFloat(str2.substring(5, 6)) * 5;
+            value12 = 0;
+
+            value12 = value0 + value1 + value2 + value3 + value4 + value5 + value6 + value7 + value8 + value9 + value10 + value11 + value12;
+
+            li_mod = value12 % 11;
+            li_minus = 11 - li_mod;
+            li_last = li_minus % 10;
+            if (li_last != li_lastid) {
+                obj2.select();
+                obj2.focus();
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            obj2.select();
+            obj2.focus();
+        }
+        return false;
+    }
+
+    function CheckForm()
+    {
+        if (id_no_chk(document.getElementById("txtSsn1"), document.getElementById("txtSsn2")))
+        {
+            window.alert("맞는 주민번호 입니다.");
+            return false;
+        }
+        else
+        {
+            window.alert("잘못된 주민번호입니다.");
+            return false;
+        }
+    }
+
+    function CheckLength()
+    {
+        if (document.getElementById("txtSsn1").value.length == 6)
+        {
+            document.getElementById("txtSsn2").focus();
+        }
+    }
+
+    //[14] 주민등록번호로 생년월일 필드 자동 채우기
+    function SsnChange()
+    {
+        if (document.getElementById("txtSsn2").value.substring(0, 1) < 3)
+            document.getElementById("txtYear").value = '19' + document.getElementById("txtSsn1").value.substring(0, 2)
+        else
+            document.getElementById("txtYear").value = '20' + document.getElementById("txtSsn1").value.substring(0, 2);
+
+        if (document.getElementById("txtSsn1").value.substring(2, 4) < 10)
+            document.getElementById("txtMonth").value = document.getElementById("txtSsn1").value.substring(3, 4)
+        else
+            document.getElementById("txtMonth").value = document.getElementById("txtSsn1").value.substring(2, 4);
+
+        if (document.getElementById("txtSsn1").value.substring(4, 6) < 10)
+            document.getElementById("txtDay").value = document.getElementById("txtSsn1").value.substring(5, 6)
+        else
+            document.getElementById("txtDay").value = document.getElementById("txtSsn1").value.substring(4, 6);
+    }
+</script>
+
+
+<form onsubmit="return CheckForm();">
+    주민등록번호:
+    <input type="text" id="txtSsn1" onkeyup="CheckLength();" />
+    -
+    <input type="text" id="txtSsn2" onchange="SsnChange();"/><br />
+
+    생년월일:
+    <input type="text" id="txtYear" />-
+    <input type="text" id="txtMonth" />-
+    <input type="text" id="txtDay" />
+
+    <input type="submit" value="체크" />
+</form>

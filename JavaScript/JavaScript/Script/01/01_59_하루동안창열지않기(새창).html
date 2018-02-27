@@ -1,0 +1,29 @@
+﻿<html>
+<head>
+    <title>하루동안 창 열지 않기(새창)</title>
+
+    <script language="JavaScript">
+
+        function setCookie(name, value, expiredays)
+        {
+            var todayDate = new Date();
+            todayDate.setDate(todayDate.getDate() + expiredays);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+        }
+        function closeWin()
+        {
+            if (document.lehit.event.checked)
+            {
+                setCookie("memo", "no", 1); // 1일동안 쿠키를 보존합니다.
+            }
+        }
+    </script>
+
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" onunload="closeWin()">
+    <form name="lehit">
+        <input type="checkbox" name="event">[하루동안 이 창을 열지않음]
+        <input type="button" value="닫기" onclick="self.close()">
+    </form>
+</body>
+</html>

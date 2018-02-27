@@ -1,0 +1,23 @@
+﻿<script language="javascript" type="text/javascript">
+    //[!] 가까운값 : 차이값의 절대값의 최솟값일 때의 데이터
+    //[1] Input
+    var data = [10, 15, 20, 25, 30];
+    var target = 21;                    //21과 가까운값
+    var near = 0;                       // <= 여기에 20이 담기면 됨
+    var abs = 0;
+    var min = 100;                      // 해당범위에서 가장 큰 값
+
+    //[2] Process
+    for (var i = 0; i < data.length; i++)
+    {
+        abs = ((data[i] - target) < 0) ? -(data[i] - target) : (data[i] - target);     //절대값
+        if (abs < min)
+        {
+            min = abs;                  //min
+            near = data[i];             //가까운값
+        }
+    }
+
+    //[3] Output
+    document.write(target + "과 가까운 값 : " + near + "<br/>");
+</script>

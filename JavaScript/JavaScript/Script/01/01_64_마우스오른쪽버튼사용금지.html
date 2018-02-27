@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>마우스 오른쪽 버튼 사용 금지</title>
+    <script language="javascript" type="text/javascript">
+        //[1] 마우스 오른쪽 버튼 사용 금지
+        function clickMouse()
+        {
+            if ((event.button == 2) || (event.button == 3))
+            {
+                return (false);
+            }
+        }
+        function clickKey()
+        {
+            if ((event.shiftKey) && (event.keyCode == 121))
+            {
+                return false;
+            }
+        }
+        function noAction()
+        {
+            return false;
+        }
+        document.onmousedown = clickMouse;
+        document.onkeydown = clickKey;
+        document.oncontextmenu = noAction;
+        document.ondragstart = noAction;
+        document.onselectstart = noAction;
+    </script>
+</head>
+<body>
+    본문에 있는 데이터를 기본적으로 읽어가지 못하도록 방지하는 스크립트
+</body>
+</html>

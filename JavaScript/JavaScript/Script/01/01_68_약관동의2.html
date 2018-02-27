@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        function CheckAgree()
+        {
+            //체크박스가 체크되었는지 확인
+            if (document.getElementById("chkAgree").checked)
+            {
+                return true;      //submit 진행
+            }
+            else
+            {
+                alert("동의하셔야합니다.");
+                document.getElementById("chkAgree").focus();
+                return false;
+            }
+        }
+
+        function SetDis()
+        {
+            //체크박스가 체크되었다면, 활성화, 그렇지 않으면 비활성화
+            document.getElementById("btnSubmit").disabled = !document.getElementById("chkAgree").checked;
+        }
+    </script>
+</head>
+<body>
+    <form id="Frm" name="Frm" action="" method="post" onsubmit="return CheckAgree();">
+        약관에 동의하시겟습니까?<br />
+        <input type="checkbox" id="chkAgree" onclick="SetDis();" />동의함
+        <input type="submit" id="btnSubmit" value="회원가입페이지로 이동" />
+    </form>
+
+    <script language="javascript" type="text/javascript">
+        //기본값으로 버튼 비활성화
+        document.getElementById("btnSubmit").disabled = true;      //비활성화
+    </script>
+
+</body >
+</html >

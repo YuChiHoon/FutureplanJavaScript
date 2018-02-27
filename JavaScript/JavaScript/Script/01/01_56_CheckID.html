@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>아이디체크</title>
+    <script language="javascript" type="text/javascript">
+        confirmID = function ()
+        {
+            //아이디 체크
+            var id = document.getElementById("txtUserID");
+            if (id.value.length < 3 || id.value.length > 15)
+            {
+                window.alert("아이디를 3자 이상 12자 이하로 입력하시오.");
+                id.focus();
+            }
+            else
+            {
+                if (window.confirm("사용할 수 있는 아이디입니다. \n사용하시겠습니까?"))
+                {
+                    //부모창의 텍스트박스로 데이터 전송 : opener
+                    opener.document.getElementById("txtUserID").value = document.getElementById("txtUserID").value;
+                }
+                else
+                {
+                    document.getElementById("txtUserID").focus();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="CheckForm" name="CheckForm" action="" method="post">
+        아이디 : <input type="text" name="txtUserID" id="txtUserID" />
+
+        <input type="button" value="검사" onclick="confirmID(); "/>
+    </form>
+
+</body>
+</html>

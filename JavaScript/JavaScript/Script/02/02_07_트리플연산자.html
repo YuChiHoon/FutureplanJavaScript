@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>=== 연산자와 !== 연산자</title>
+    <script language="javascript" type="text/javascript">
+        var str = "";
+
+        document.write(str == 0);               //true => 관대하게 비교
+        document.write(str === 0);              //false => 정확한 타입 비교
+
+        document.write("<hr/>");
+
+        document.write(str != 0);               //false
+        document.write(str !== 0);              //true
+
+        document.write("<hr/>");
+
+        document.write(null == undefined);      //true
+        document.write(null === undefined);     //false
+    </script>
+</head>
+<body>
+    <div>
+        == 연산자 보다는 === 연산자를 사용하자
+    </div>
+</body>
+</html>

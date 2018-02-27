@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>함수사용법</title>
+    <script language="javascript" type="text/javascript">
+        // 함수 선언부
+        function ShowTitle()
+        {
+            document.write("<h3>함수의 3가지 스타일</h3>");
+        }
+        function MyAbs(data)
+        {
+            var result = (data < 0) ? - data : data;
+
+            document.write(data + "의 절대값 : " + result + "<br/>");
+        }
+        function MyPow(a, b)
+        {
+            var result = 1;
+            for (var i = 0; i < b; i++)
+            {
+                result *= a;
+            }
+            return result;
+        }
+        function MyRound(num, pos)
+        {
+            //[1]
+            var result = 0.0;
+            var half = 0.5;
+            var factor = 1;
+            //[2]
+            for (var i = 0; i < pos; i++)
+            {
+                half *= 0.1;
+                factor *= 10;
+            }
+            result = parseInt((num + half) * factor) / parseFloat(factor);
+            //[3]
+            return result;
+        }
+        function PrintTable(row, col)
+        {
+            var table = "<table border='1'";
+            for (var i = 0; i < row; i++)
+            {
+                table += "<tr>";
+                for (var j = 0; j < col; j++)
+                {
+                    table += "<td>";
+                    table += (i + 1) + "행" + (j + 1) + "열";
+                    table += "</td>";
+                }
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.write(table);
+        }
+    </script>
+</head>
+<body>
+    <script language="javascript" type="text/javascript">
+        //함수 호출부
+        //[1] 매개변수가 없는 함수
+        ShowTitle();
+        //[2] 매개변수가 있는 함수
+        MyAbs(-10); MyAbs(10);
+        //[3] 반환값이 있는 함수
+        var retValue = MyPow(2, 10);
+        document.write("2의 10승 : " + retValue + "<br/>");
+        //[!] 퀴즈 : 반올림 함수
+        document.write(MyRound(12.5678, 2) + "<br/>");        //12.57
+        document.write(MyRound(12.5678, 1) + "<br/>");        //12.5
+        //테이블
+        PrintTable(2, 3);
+        PrintTable(5, 5);
+    </script>
+
+</body >
+</html >

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>폼을 동기화 시키는 스크립트</title>
+    <script language="javascript" type="text/javascript">
+        var name = "";
+        var email = false;
+        function Initvalue(frm)
+        {
+            name = frm.txtname.value;
+            email = frm.chkEmail.checked;
+        }
+        function ShipToBill(frm)
+        {
+            if (frm.copy.checked)
+            {
+                Initvalue(frm);         //현재 텍스트박스와 체크박스의 상태 유지
+                //document.getElementById("txtname2").value = document.getElementById("txtname").value;       //기본
+                //frm.chkEmail2.checked = frm.chkEmail.checked;                                               //폼 객체 활용
+
+                //상태 유지 사용
+                frm.txtname2.value = name;
+                frm.chkEmail2.checked = email;
+            }
+            else            //체크박스를 해제한다면.
+            {
+                frm.txtname2.value = "";
+                frm.chkEmail2.checked = false;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <form id="MyForm" action="" method="post">
+        주문자 정보<br />
+        이름 : <input type="text" id="txtname" /><br />
+        <input type="checkbox" id="chkEmail" /> 배송정보를 메일로 받음
+        <hr />
+        <input type="checkbox" id="copy" onclick="ShipToBill(this.form);"/> 주문자 정보와 정송지 정보가 같음
+        <hr />
+        배송지 정보<br />
+        이름 : <input type="text" id="txtname2" /><br />
+        <input type="checkbox" id="chkEmail2" /> 배송정보를 메일로 받음
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>랜덤 이미지 표시</title>
+    <script language="javascript" type="text/javascript">
+        //페이지 로드 이벤트 처리기 구성
+        window.onload = function ()
+        {
+            //랜덤하게 보여줄 사진 개체 저장
+            var myPhoto = new Array("../Icon/K-001.jpg", "../Icon/K-002.jpg", "../Icon/K-003.jpg");
+
+            //0~2번째 인덱스를 랜덤하게 생성
+            var index = Math.floor(Math.random() * myPhoto.length);     //Math.floor(2.7) = 2;
+
+            //0~2번째 인덱스에 해당하는 이미지를 출력
+            document.getElementById("imgPlaceHolder").src = myPhoto[index];
+        }
+    </script>
+</head>
+<body>
+    <img id="imgPlaceHolder" src="../Icon/K-001.jpg" alt="랜덤하게 이미지가 표시될 영역" width="200" height="200" />
+</body>
+</html>

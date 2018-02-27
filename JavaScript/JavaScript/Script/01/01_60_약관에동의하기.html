@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>이용 약관</title>
+    <script language="javascript" type="text/javascript">
+        function CheckForm()
+        {
+            var ok = document.getElementById("Ok");
+            if (ok.checked == true)
+            {
+                location.href = "01_60_Register.html";      //이동
+            }
+            else
+            {
+                window.alert("약관에 동의하셔야합니다.");
+                ok.focus();
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<textarea style="width:400px; height:61px">
+우리 쇼핑몰은 어쩌구 저쩌구...
+약관 내용 나열...
+</textarea>
+
+    <form id="MyForm">
+        <input type="checkbox" id="Ok" />약관에 동의하시겠습니까?
+        <input type="button" value="회원가입" onclick="CheckForm();" />
+    </form>
+</body>
+</html>

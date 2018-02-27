@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>롤오버 기능 적용하기</title>
+    <style type="text/css">
+        img 
+        {
+            border-width: 0px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" 
+       onmouseover="document.getElementById('imgFile').src = '../Icon/K-002.jpg';"
+       onmouseout="document.getElementById('imgFile').src = '../Icon/K-001.jpg';">
+        <img src="../Icon/K-001.jpg" alt="기본" id="imgFile"/>
+    </a>
+</body>
+</html>

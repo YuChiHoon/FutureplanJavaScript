@@ -1,0 +1,54 @@
+﻿<html>
+<head>
+    <title>하루동안 창 열지 않기(메인)</title>
+
+    <script language="javascript">
+
+<!--
+        //하루동안 창 열지 않기 스크립트 시작---
+        function getCookie(name)
+        {
+            var Found = false
+            var start, end
+            var i = 0
+
+            while (i <= document.cookie.length)
+            {
+                start = i
+                end = start + name.length
+                if (document.cookie.substring(start, end) == name)
+                {
+                    Found = true
+                    break
+                }
+                i++
+            }
+
+            if (Found == true)
+            {
+                start = end + 1
+                end = document.cookie.indexOf(";", start)
+                if (end < start)
+                    end = document.cookie.length
+                return document.cookie.substring(start, end)
+            }
+            return ""
+        }
+
+        function openMsgBox()
+        {
+            var eventCookie = getCookie("memo");
+            if (eventCookie != "no")
+                window.open('01_59_하루동안창열지않기(새창).html', '_blank', 'width=400,height=420,top=10,left=10');
+        }
+        openMsgBox();
+        //하루동안 창 열지 않기 스크립트 끝.---
+
+        //-->
+    </script>
+
+</head>
+<body bgcolor="#ffffff" leftmargin="0" onload="" topmargin="0">
+    원본 파일
+</body>
+</html>
