@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>예외 처리</title>
+    <script language="javascript" type="text/javascript">
+        //출력 전담 함수
+        function print(msg)
+        {
+            document.write(msg + "<br/>");
+        }
+
+        //try~catch~finally 절 : 자바스크립트의 예외처리 구문 : C#/Java와 비슷
+        try
+        {
+            //에러가 발생할 만한 코드 입력
+            Fake();
+        }
+        catch (e)
+        {
+            //에러가 발생했을때 실행되는 영역
+            print(e.name + ", " + e.message);
+        }
+        finally
+        {
+            //에러가 발생하던 안하던 무조건 실행하는 영역
+            print("에러가 발생하던 안하던 실행합니다.");
+        }
+
+        //throw { name: "예외 이름", message: "예외 내용" };      //예외 발생
+        try
+        {
+            var a = 3;
+            var b = 0;
+            if (b === 0)
+            {
+                throw { name: "DivideByZeroException", message: "0으로 나눌수없습니다." };
+            }
+        }
+        catch (e)
+        {
+            print(e.name + ", " + e.message);
+        }
+        finally
+        {
+            print("프로그램을 정상 종료합니다.")
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

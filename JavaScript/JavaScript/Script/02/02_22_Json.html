@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/Json/json2.js"></script>
+    <script language="javascript" type="text/javascript">
+        // eval() 함수
+        eval("document.title = 'Json'");
+
+        // eval() 함수를 통한 Json읽기
+        var json = '{"books":[{"title":"쉽게 배우는 자바스크립트", "author":"박용준"}, {"title":"쉽게 배우는 JQuery", "author":"홍길동"}]}';
+        eval("var data = " + json);
+        document.write("제목 : " + data.books[0].title + ", " + "저자 : " + data.books[0].author + "<br/>");
+        document.write("제목 : " + data.books[1].title + ", " + "저자 : " + data.books[1].author + "<br/>");
+
+        //JSON2.js를 사용한 JSON 읽기
+        var reader = JSON.parse(json);      //문자열 =>JSON
+        document.write("제목 : " + reader.books[0].title + ", " + "저자 : " + reader.books[0].author + "<br/>");
+        document.write("제목 : " + reader.books[1].title + ", " + "저자 : " + reader.books[1].author + "<br/>");
+
+        // JQuery의 json 읽어오는 함수 사용
+        // ...
+    </script>
+</head>
+<body>
+
+</body>
+</html>

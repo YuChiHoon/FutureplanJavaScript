@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>객체 생성 문법</title>
+    <script language="javascript" type="text/javascript">
+        //출력 전담 함수
+        function print(msg) {
+            document.write(msg + "<br/>");
+        }
+
+        //[1] Object()를 사용하여 객체를 생성, 인덱서(indexer)를 사용하여 속성 생성
+        var person = new Object();         //[a] 객체 생성
+        person["name"] = "홍길동";          //[b] 인덱서(속성)를 사용하여 속성/필드를 생성
+        person["salary"] = 3600;
+        person["age"] = 21;
+        person["payCheck"] = function () {
+            var montyly = this["salary"] / 12;          //[!] this ; 함수내에서 자기 자신(객체)를 참조
+            print("이름 : " + this["name"] + ", " + "월급 : " + montyly);
+        };                                  //[c] 무명 함수를 사용하여 객체 내에 함수(메서드) 생성
+        person["payCheck"]();               //객체의 함수 호출
+        print("<hr/>");
+
+        //[2] 속성값을 직접 지정
+        var person2 = {};               //new Object();
+        person2.name = "백두산";
+        person2.salary = "4800";
+        person2.age = 100;
+        person2.payCheck = function () {
+            var montyly = this.salary / 12;          //[!] this ; 함수내에서 자기 자신(객체)를 참조
+            print("이름 : " + this.name + ", " + "월급 : " + montyly);
+        };
+        person2.payCheck();             //함수 호출 : 객체.맴버();
+
+        //[3] 객체 리터럴을 사용하여 객체 생성
+        var person3 = {
+            "name": "RedPlus",
+            "salary": "12000",
+            "age": 21,
+            "payCheck": function () {
+                var montyly = this.salary / 12;          //[!] this ; 함수내에서 자기 자신(객체)를 참조
+                print("이름 : " + this.name + ", " + "월급 : " + montyly);
+            }
+        };
+        person3.payCheck();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

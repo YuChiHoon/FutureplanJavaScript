@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>무명 함수</title>
+    <script language="javascript" type="text/javascript">
+        //출력 전담 함수
+        function print(msg)
+        {
+            document.write(msg + "<br/>");
+        }
+
+        //[1] 기본 함수
+        function square(x)
+        {
+            var result = x * x;
+            return result;
+        }
+        print(square(5));       //25
+
+        //[!] JavaScript의 함수는 추가 매개변수는 무시...
+        print(square(5, 4));    //25
+
+        //[2] 익명 함수(무명 함수) : anonymous function
+        var myFunc = function (x)
+        {
+            return x * x;
+        }
+        print(myFunc(5));       //25
+    </script>
+</head>
+<body>
+
+</body>
+</html>

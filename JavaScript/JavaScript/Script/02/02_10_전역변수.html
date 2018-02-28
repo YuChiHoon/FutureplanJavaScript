@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>전역변수</title>
+    <script language="javascript" type="text/javascript">
+        function sum(first, second)
+        {
+            //두 수의 합계
+            //첫번째 수 first
+            //두번째 수 second
+            temp = first;       //var 키워드 뺴고 => 전역변수
+            return (temp + second);
+        }
+        // 함수 호출
+        document.write(sum(3, 5) + "<br/>");
+        document.write(temp);
+        document.write(sum(30, 50) + "<br/>");
+        document.write(temp);
+        document.write(window.temp);        //전역변수는 window객채의 속성(필드)로 표현
+        if (!window.temp)
+        {
+            document.write("temp 변수가 정의되지 않음");
+        }
+        else
+        {
+            document.write("temp 변수가 정의됨" + window.temp);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

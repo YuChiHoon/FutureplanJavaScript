@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>함수의 매개변수 처리 방식</title>
+    <script language="javascript" type="text/javascript">
+        //[1] 단일 값 데이터 전송
+        function Show(parameter)
+        {
+            document.write("[1] " + parameter + "<br/>");
+        }
+        Show("안녕하세요.");
+
+        //[2] 배열값 전달
+        function SumArray(arr)
+        {
+            var sum = 0;
+            for (var i in arr)
+            {
+                sum += arr[i];  // 넘겨온 값 누적
+            }
+            document.write("[2] " + sum + "<br/>");
+        }
+        var array = [1, 2, 3, 4, 5];
+        SumArray(array);
+
+        //[3] 함수 자체를 매개변수로 전달
+        function FuncArray(func, arr)
+        {
+            document.write("[3] <br>");
+            for (var i in arr)
+            {
+                func(arr[i]);       //alert(1); alert(2); alert(3);
+            }
+        }
+        var collection = [1, 2, 3];
+        FuncArray(alert, collection);       //alert(1); alert(2);...
+
+        //[3][1] 기본
+        var func1 = new Function("e", "alert(e);");
+        FuncArray(func1, collection);
+
+        //[3][2] Function 개체
+        //Function(매개변수들..., 함수본체);
+        //FuncArray(new Function("e", "alert(e);"), collection);
+
+        //[3][3] 무명 매서드(익명 함수)
+        //FuncArray(function (e) { alert(e); }, collection);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

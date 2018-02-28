@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        //출력 전담 함수
+        function print(msg)
+        {
+            document.write(msg + "<br/>");
+        }
+
+        //개체 생성 : empty object
+        var o1 = {};
+        o1.x = 10;          //새로운 속성인 x가 추가
+        o1.y = "안녕";      //y 속성 추가
+
+        print(o1.x);
+        print(o1.y);
+        print(o1.toString());       //빌트인 함수(toString) : 함수의 이름 출력...
+        //개체 생성2 : Object()
+        var o2 = new Object();
+        o2.z = "박용준";
+        print(o2.z);
+        print(o2.e);        //undefined
+        //개체 생성3 : object literal
+        var na = { name: "박용준2", age: 21 };
+        print(na.name + ", " + na.age);
+        //중첩된 속성 : nested object
+        var my = { name: "박용준3", address: { num: 1, street: "원창로" } };
+        print(my.name + ", " + my.address.num + ", " + my.address.street);
+        //모든 객체(object)는 toString() 함수를 갖는다. -> 객체를 문자열로 변환
+        print([10, 20, 30].toString());
+        print(true.toString());         //true ->"true" : 성질 자체가 문자열로 바뀜
+        print(print.toString());        //함수 자체를 문자열로 출력
+        print(/\d/.toString());         //정규식 자체를 문자열로 출력
+        //toString() 함수 재정의(override)
+        print(na);      //[object Object]
+        na.toString = function ()
+        {
+            return "이름 : " + this.name + ", 나이 : " + this.age;
+        };
+        print(na);              //이름 : 박용준2, 나이 21
+        print(na.toString());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>배열의 주요 맴버 설명</title>
+    <script language="javascript" type="text/javascript">
+        //출력 전담 함수
+        function print(msg)
+        {
+            document.write(msg + "<br/>");
+        }
+
+        //빈 배열 생성
+        var empty = [];
+        print(empty.length);            //배열의 길이
+
+        //새로운 배열 생성
+        var arr = ['a', 'b', 'c', 'd', 'e'];
+        for (var i = 0; i < arr.length; i++)
+        {
+            print(arr[i]);              //배열의 요소 값 출력
+        }
+
+        //배열에 새로운 항목 추가
+        arr.push('f');                  //stack에 push(), pop()
+        print(arr);                     //a~f
+        print(arr.pop());               // 가장최근에 push()한 값을 출력
+        print(arr);                     //a~e
+        print(arr.reverse())            //거꾸로 변형
+        print(arr.reverse())            //다시 원래대로 변경
+
+        //slice() : 필요한 인덱스의 내용을 조회
+        print(arr.slice(1, 3));         //1번째 인덱스부터 3번째 인덱스 전까지 : b.c
+        print(arr);
+
+        //splice() : 검색한 항목을 뽑아냄(Delete)
+        print(arr.splice(1, 3));        //b,c,d
+        print(arr);                     //a,e
+
+        //sort() : 정렬
+        var sortArr = ['b', 'z', 'a', 'j'];
+        print(sortArr.sort());          //a,b,j,z
+        print(sortArr);                 //정렬된 상태
+
+        var sortArr2 = [3, 1, 10, 30, 5, 4];
+        print(sortArr2.sort());         //1,3,4,5 => 1,10,3,30,... 첫번째 숫자를 기준...
+        //위 정렬 문제를 개선
+        print(sortArr2.sort(function (f, s) { return f - s; }));    //1,3,4,5,10,30 정상 출력
+    </script>
+</head>
+<body>
+
+</body>
+</html>

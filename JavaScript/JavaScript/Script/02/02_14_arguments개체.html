@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>arguments 개체</title>
+    <script language="javascript" type="text/javascript">
+        //출력 전담 함수
+        function print(msg)
+        {
+            document.write(msg + "<br/>");
+        }
+
+        //Arguments 개체 테스트
+        function argumentsTest()
+        {
+            if (arguments[0])
+            {
+                print(arguments[0]);    //인덱서를 사용해서 매개변수 값 받기
+            }
+            print(arguments.length);    //매개변수의 개수
+            return typeof arguments;
+        }
+
+        //넘겨온 수들의 합계
+        function sum()
+        {
+            var hap = 0;
+            for (var i = 0; i < arguments.length; i++)
+            {
+                hap += arguments[i];
+            }
+            return hap;
+        }
+        //페이지 로드 이벤트 처리
+        window.onload = function ()
+        {
+            print(argumentsTest());
+            argumentsTest("Hello");
+            argumentsTest("Bye", 1234);
+
+            print(sum(1,2,3));
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

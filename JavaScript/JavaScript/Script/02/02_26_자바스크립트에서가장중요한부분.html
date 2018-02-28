@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        //[1] 일반적인 함수 모양
+        function print(msg)
+        {
+            document.write(msg + "<br/>");
+        }
+        print("안녕하세요.");
+
+        //[2] 익명 함수
+        var greet = function (x)
+        {
+            print(x);
+        }
+        greet("반갑습니다.");
+
+        //[3] Function 생성자로 함수 만들기 : 런타임에 임의로 함수를 작성할 수 있는 장점
+        var func = new Function("x", "print(x);");
+        func("또 만나요");
+
+        //[a] 함수를 매개변수로 또 다른 함수에게 전달
+        function square(x)
+        {
+            return x * x;
+        }
+        function operateOn(num, func)
+        {
+            return func(num);
+        }
+        print(operateOn(16, square));
+
+        //[b] 반환값 자체를 함수(익명)로
+        function makeIncrementer()
+        {
+            return function (x) { return x + 1; };
+        }
+        var inc = makeIncrementer();
+        print(inc(7));
+
+        //[c] 함수 그 자체가 하나의 개체이다.
+        function sayHi(x)
+        {
+            print("안녕, " + x);
+        }
+        sayHi("홍길동");
+        sayHi.aaa = "aaa";
+        sayHi["bbb"] = "bbb";
+        print(sayHi.aaa + ", " + sayHi.bbb);
+
+        //[d] 배열에 함수를 담아서 사용 가능
+        var arr = [];
+        arr[0] = function (x) { return x * x; };
+        arr[1] = arr[0](2);             // 2 * 2 = 4
+        arr[2] = arr[0](arr[1]);        // 4 * 4 = 16
+        arr[3] = arr[0](arr[2]);        // 16 * 16 = 256
+        print(arr[3]);
+
+        //[e] 함수는 개체의 속성으로도 사용 가능
+        var obj =
+            {
+                "aaa": function () { return "AAA"; },
+                "toString": function () { return "새롭게 정의된 toString"; }
+            };
+        print(obj.aaa());
+        print(obj);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
