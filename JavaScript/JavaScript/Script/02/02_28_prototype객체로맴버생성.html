@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>prototype 객체로 맴버 생성</title>
+    <script language="javascript" type="text/javascript">
+        //클래스 선언 : 객체를 만들기 위한 설계도
+        function Person(name, salary, age)       //생성자
+        {
+            //클래스 내에 속성을 생성
+            this.name = name;       //public한 맴버
+            this.salary = salary;
+            var age;                //private한 맴버
+            //맴버 추가
+            //...
+            //[3] Private Member 생성
+            this.getAge = function () { return age; };
+            this.setAge = function (newAge) { age = newAge; };
+        }
+        //[1] prototype 객체(속성)를 통해서 Person 클래스에 메서드 추가
+        Person.prototype.payCheck = function ()
+        {
+            var monthly = this.salary / 12;
+            document.write("이름 : " + this.name + ", 월급 : " + monthly + "<br/>");
+        };
+        //클래스의 인스턴스 생성 : 객체 생성
+        var p1 = new Person("홍길동", 3600);
+        p1.payCheck();
+        var p2 = new Person();
+        p2.name = "백두산";
+        p2.salary = 4800;
+        p2.payCheck();
+
+        //[2] 정적(Static) 맴버를 생성 : Person.맴버명, 클래스명.맴버명
+        Person.companyName = "데브렉";
+        document.write("회사명 : " + Person.companyName + "<br/>");        //getter
+
+        //[3] Private Member : 클로저 사용
+        var p3 = new Person("임꺽정", 4800, 30);
+        document.write("이름 : " + p3.name + ", 나이 : " + p3.getAge() + "<br/>");
+
+        var p4 = new Person("지리산", 6000);
+        p4.setAge(40);
+        document.write("이름 : " + p4.name + ", 나이 : " + p4.getAge() + "<br/>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

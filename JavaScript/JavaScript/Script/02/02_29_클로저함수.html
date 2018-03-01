@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>클로저(Closure)</title>
+    <script language="javascript" type="text/javascript">
+        // 클로저(Closure) 안쪽 함수에서 바깥쪽 함수에 접근이 가능한것
+        var a = "바깥쪽";
+
+        var first = function ()
+        {
+            var b = "중간쪽";
+            var second = function ()
+            {
+                var c = "안쪽";
+
+                var third = function ()
+                {
+                    document.write(a + b + c);
+                };
+
+                third();
+            };
+            second();
+        };
+
+        first();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

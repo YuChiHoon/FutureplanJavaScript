@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>자바스크립트에서 쿠키 사용</title>
+    <script language="javascript" type="text/javascript">
+        //페이지 로드 이벤트 잡기
+        window.onload = Page_Load;
+
+        function Page_Load()
+        {
+            //저장된 쿠키 읽어오기
+            displayCookie();
+
+            //여러개의 쿠키 리스트를 <span> 태그에 출력
+            displayCookieList();
+
+            //btnSubmit_Click 버튼의 클릭이벤트 적용
+            document.getElementById("btnSubmit").onclick = btnSubmit_Click;
+
+            //클릭 이벤트 적용
+            document.getElementById("btnSetAndGet").onclick = btnSetAndGet_Click;
+
+            //쿠키 삭제 버튼 등록
+            document.getElementById("btnDeleteCookie").onclick = btnDeleteCookies_Click;
+        }
+
+        function btnSubmit_Click()
+        {
+            // txtName에 저장된 값을 쿠키에 저장
+            setCookie();
+            setCookies("txtEmail", "test@a.com", 1);        //테스트 쿠키 저장
+        }
+
+        //쿠키 읽어오는 함수
+        function displayCookie()
+        {
+            var txtName = "";
+            //쿠키 여부 확인
+            if (document.cookie != "")
+            {
+                //여러개의 쿠키 읽어오기
+                var cookies = document.cookie.split("; ");
+                // 쿠키 개수만큼 반복
+                for (var i = 0; i < cookies.length; i++)
+                {
+                    if (cookies[i].split("=")[0] == "txtName")
+                    {
+                        //txtName=red;
+                        txtName = cookies[i].split("=")[1];
+                    }
+                }
+            }
+            document.getElementById("txtName").value = txtName;
+        }
+
+        //쿠키 저장 함수
+        function setCookie()
+        {
+            //쿠키 소멸시기
+            var expireDate = new Date();
+            expireDate.setMonth(expireDate.getMonth() + 1);
+            var txtName = document.getElementById("txtName").value;
+            //쿠키 저장 : 세미콜론 다음에 공백 하나 두기 [; ]
+            document.cookie = "txtName=" + txtName + "; path=/; expires=" + expireDate.toGMTString();
+            alert('쿠키저장');
+        }
+
+        //쿠키 저장 함수
+        function setCookies(cookieName, cookieValue, expireDays)
+        {
+            var expireDate = new Date();
+            expireDate.setDate(expireDate.getDate() + expireDays);      //넘겨온 일자 값 : 1
+            document.cookie = cookieName + "=" + cookieValue + "; path=/; expires=" + expireDate.toGMTString() + ";";
+        }
+
+        //쿠키 리스트 출력 함수
+        function displayCookieList()
+        {
+            var str = "";
+            if (document.cookie == "") {
+                str = "입력된 쿠키가 없습니다.";
+            }
+            else
+            {
+                // 여러개의 쿠키 읽어오기
+                var cookies = document.cookie.split("; ");
+                //쿠키 개수 만큼 반복
+                for (var i = 0; i < cookies.length; i++)
+                {
+                    str += "쿠키 이름 : " + cookies[i].split("=")[0] + ", 쿠키값 : " + cookies[i].split("=")[1]+ "<br/>";
+                }
+            }
+            document.getElementById("listCookies").innerHTML = str;
+        }
+
+        // 특정 쿠키 이름에 따른 값을 읽어오는 함수
+        function getCookieValue(cookiename)
+        {
+            // 여러개의 쿠키 읽어오기
+            var cookies = document.cookie.split("; ");
+            //쿠키 개수 만큼 반복
+            for (var i = 0; i < cookies.length; i++)
+            {
+                //쿠키 이름이 같으면
+                if (cookies[i].split("=")[0] == cookiename)
+                {
+                    return cookies[i].split("=")[1];        //해당 쿠키값 반환
+                }
+            }
+            // 기본값
+            return 0;
+        }
+
+        // 저장 동시에 출력
+        function btnSetAndGet_Click()
+        {
+            setCookies("myCookie", "안녕하세요.", 1);         //쿠키 저장
+            document.getElementById("myCookie").innerHTML = getCookieValue("myCookie");     //쿠키 일기
+        }
+
+        //[!] 쿠키 전체 삭제
+        function deleteCookies()
+        {
+            var count = 0;  //쿠키 개수
+
+            //저장된 쿠키가 있다면...
+            if (document.cookie != "")
+            {
+                var cookies = document.cookie.split("; ");
+                count = cookies.length;     //쿠키 개수
+
+                //쿠키에 대한 날짜를 -1로 설정하면 쿠키 바로 소멸됨...
+                var expireDate = new Date();
+                expireDate.setDate(expireDate.getDate() + -1);  // -1: 쿠키 삭제
+
+                for (var i = 0; i < count; i++)
+                {
+                    var cookieName = cookies[i].split("=")[0];
+                    document.cookie = cookieName + "=; path=/; expires=" + expireDate.toGMTString() + ";";      //쿠키 이름을 Nothing으로 설정하고 시기를 -1로 주면 삭제됨
+
+                }
+            }
+
+            //삭제된 쿠키 개수 반환
+            return count;
+        }
+
+        function btnDeleteCookies_Click()
+        {
+            alert(deleteCookies() + "개의 쿠키가 제거되었습니다.");
+        }
+    </script>
+</head>
+<body>
+    <form action="#">
+        <input type="text" name="txtName" id="txtName" />
+        <input type="button" name="btnSubmit" id="btnSubmit" value="로그인" />
+        <hr />
+        <span id="listCookies"></span>
+        
+        <hr />
+        <input type="button" name="btnSetAndGet" id="btnSetAndGet" value="쿠키 저장 및 출력" />
+        <span id="myCookie"></span>
+        
+        <hr />
+        <input type="button" name="btnDeleteCookie" id="btnDeleteCookie" value="쿠키 삭제" />
+        <span id="deleteResult"></span>
+
+    </form>
+</body>
+</html>

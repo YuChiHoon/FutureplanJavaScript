@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>클로저(Closure) 사용 예제</title>
+    <script language="javascript" type="text/javascript">
+        //바깥쪽 함수
+        function Increment(num)
+        {
+            //안쪽 함수에서 사용할 수 있는 전역 변수 역활
+            var sum = 0;        //a() => 2,4,6
+            //안쪽 함수
+            return function ()
+            {
+                sum += num;
+                return sum;
+            }
+        }
+
+        //함수 호출
+        var a = Increment(2);
+        document.write(a());                  //2
+        document.write(a());                  //4
+        document.write(a() + "<br/>");        //6
+
+        var b = Increment(3);
+        document.write(b());                  //3
+        document.write(b());                  //6
+        document.write(b() + "<br/>");        //9
+
+        document.write(a());                  //8
+    </script>
+</head>
+<body>
+
+</body>
+</html>
